@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "321894293586",
+    "firebase_url": "https://codehunt2k19.firebaseio.com",
+    "project_id": "codehunt2k19",
+    "storage_bucket": "codehunt2k19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321894293586:android:519d7365b82f67c9db3f8b",
+        "android_client_info": {
+          "package_name": "com.example.codehunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321894293586-r7fvt3gns0b9i8ejdf79v77cvqo21av9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.codehunt",
+            "certificate_hash": "3e2f158b11054fb240dfdfed8965eccc0782f9b5"
+          }
+        },
+        {
+          "client_id": "321894293586-3a5ihakv66enflq41dq1b1a4er400moo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0CrUomQxTjjox8SwB3xWcMmbx5uvV648"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321894293586-3a5ihakv66enflq41dq1b1a4er400moo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
