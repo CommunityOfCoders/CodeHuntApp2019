@@ -31,7 +31,7 @@ public class CodehuntActivity extends AppCompatActivity {
         String TN = pref.getString(Constants.TeamName, Constants.TeamName);
         Log.e(TAG, "onCreate: Team Name = "+TN);
         if(!TN.equals(Constants.TeamName)) {
-            Intent intent = new Intent(CodehuntActivity.this, MainActivity.class);
+            Intent intent = new Intent(CodehuntActivity.this, MainActivity2.class);
             startActivity(intent);
             finish();
         }
