@@ -22,7 +22,8 @@
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/app_name">
+            app:title="@string/app_name"
+            app:titleTextColor="@color/green">
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -30,8 +31,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabTextColor="@color/colorAccentLight">
+            app:tabSelectedTextColor="@color/green"
+            app:tabTextColor="@color/colorAccent">
 
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>

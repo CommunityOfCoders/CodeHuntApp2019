@@ -30,10 +30,10 @@ public class LeaderboardRow extends ConstraintLayout {
         QuestionNo.setText(questionNo);
         Time.setText(time);
         if(bold) {
-            TeamName.setTextColor(getResources().getColor(R.color.black));
-            Rank.setTextColor(getResources().getColor(R.color.black));
-            QuestionNo.setTextColor(getResources().getColor(R.color.black));
-            Time.setTextColor(getResources().getColor(R.color.black));
+            TeamName.setTextColor(getResources().getColor(R.color.green));
+            Rank.setTextColor(getResources().getColor(R.color.green));
+            QuestionNo.setTextColor(getResources().getColor(R.color.green));
+            Time.setTextColor(getResources().getColor(R.color.green));
         }
         if(header) {
             TeamName.setPaintFlags(TeamName.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
