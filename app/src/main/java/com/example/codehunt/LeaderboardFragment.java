@@ -56,7 +56,7 @@ public class LeaderboardFragment extends Fragment {
                 leaderboardLinearLayout.removeAllViews();
 
                 leaderboardLinearLayout.addView(new LeaderboardRow(getContext(),
-                        "Team Name", "Rank", "Question", "Time (s)", true, true));
+                        "Team Name", "Rank", "Ques", "Time (s)", true, true));
 
                 int rank = 0;
 

@@ -34,14 +34,81 @@ public class QuestionFragment extends Fragment {
     private Button nextButton;
     private Button hintsButton;
     SharedPreferences pref;
-    private int[] passcodes = {124067, 834592, 348215, 783152, 672153, 681354};
+    private int[] passcodes = {124067, 834592, 348215, 672153, 681354};
     private String[] questions = {
-            "GET CODIN!",          // Lab3 -> NetLab           // 124067
-            "SCRAM - UNSCRAM",      // NetLab -> VLSILab        // 834592
-            "RIDDLE",               // VLSILab -> NCC           // 348215
-            "CIPHER",               // NCC -> Lab3Q1            // 783152
-            "THE MATRIX",             // Lab3Q1 -> Lab3Q2         // 672153
-            "INV COUNT"              // Lab3Q2 -> END            // 681354
+            "Round 1\n\nQuestion:Given an array of size n, print the value of minimum odd element.\n" +
+                    "\n" +
+                    "Input format: Enter a number N, input N elements from the user\n" +
+                    "\n" +
+                    "Output format: A single digit representing the value of minimum odd element ,if there is no odd element found print \"Not found\" (without double quotes).\n" +
+                    "\n" +
+                    "Example :\n" +
+                    "4 \n" +
+                    "1 2 3 4 \n" +
+                    "output: 1\n" +
+                    "\n" +
+                    "5\n" +
+                    "4 6 8 9 3\n" +
+                    "output :3\n" +
+                    "\n" +
+                    "3\n" +
+                    "6 8 10\n" +
+                    "output: Not found",          // Lab3 -> BCTLab           // 124067
+                "Round2\n\n1. I am fond of gravitational force who has coloured several lives! (2)\n" +
+                    "\n" +
+                    "2.  I am a programming language such that if you insert 1 ruppee in atm you get 10^6 rupees out. (6)\n" +
+                    "\n" +
+                    "3. Usually without a doctor, I am someone who loves travelling through wildlife.(1)\n" +
+                    "\n" +
+                    "4. I love eating desserts but didn't get any after pie!  (6)\n" +
+                    " \n" +
+                    "5. (Someone cracks a joke) \n" +
+                    "A random guy: OMG! Lol.\n" +
+                    "Another guy: I am rolling on the floor laughing! \n" +
+                    "\n" +
+                    "loool iz 20\n" +
+                    "loooooool iz 74\n" +
+                    "rtfm \n" +
+                    "   wtf loool iz liek loooooool \n" +
+                    "       tldr \n" +
+                    "   brb \n" +
+                    "   LMAO loool\n" +
+                    "brb \n" +
+                    "rofl loool \n" +
+                    "can you find a character behind all this? \n" +
+                    "\n" +
+                    "6. A shopping center but with a barrier. (5)\n" +
+                    "\n" +
+                    "7. Want to shop to your fullest? Essentially gaining a victory! Let's explore near the sundarbans then! (2)\n" +
+                    "\n",      // BCTLab -> VLSILab        // 834592
+            "Round 3\n\nMunicipal Subdivision of Bahretal, Germany.\n" +
+                    "\n" +
+                    "To know the answer:\n" +
+                    "“Ask  us  no  questions  and  we’ll  tell  you  no  lies”\n" +
+                    "\n" +
+                    "These days will help you find your next location:\n" +
+                    "37 years since the foundation of Microsoft.\u2028The day when Dolly the sheep died.\n" +
+                    "Nicolas Cage’s 37th birthday.\u2028Apple Inc.’s 30th anniversary.\n" +
+                    "Justin Gatlin won 100m, World Athletics Championships, Helsinki, Finland.\n" +
+                    "One year since the launch of Opportunity.\n" +
+                    "7 years since the production of first digital cinema production in Europe.\n" +
+                    "33 years since Neil Armstrong stepped on moon.",               // VLSILab -> NCC           // 348215
+            "Round 4\n\nPROBLEM STATEMENT 1 :\n" +
+                    "Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.\n" +
+                    "INPUT :\n" +
+                    "arr[] = {1,2,3,4,5,6,7}\n" +
+                    "d = 2\n" +
+                    "OUTPUT:\n" +
+                    "arr[] = {3,4,5,6,7,1,2}\n",             // Lab3Q1 -> Lab3Q2         // 672153
+            "Round 4\n\nPROBLEM STATEMENT 2:\n" +
+                    "\n" +
+                    "For a given square matrix, find its transpose and print it on the terminal.\n" +
+                    "\n" +
+                    "INPUT:\n" +
+                    "The first line contains a single integer n. The next lines contain a square matrix of size n\n" +
+                    "\n" +
+                    "OUTPUT:\n" +
+                    "Print the transpose of matrix on a new line.\n"              // Lab3Q2 -> END            // 681354
     };
     private int curr_question; // Real_Q - 1
     private int curr_hints;
@@ -62,7 +129,7 @@ public class QuestionFragment extends Fragment {
         curr_start_time = pref.getLong("Q" + curr_question + "Time", System.currentTimeMillis() / 1000);
         Log.e(TAG, String.format("onCreateView: %d, %d, %d", curr_question, curr_hints, curr_start_time));
 
-        if (curr_question >= 6) {
+        if (curr_question >= 5) {
 //            Intent i = new Intent(getContext(), com.coc.codehunt.Finish.class);
 //            startActivity(i);
 ////            return view;
@@ -79,7 +146,7 @@ public class QuestionFragment extends Fragment {
         }
         hintsButton.setText(String.format(Locale.ENGLISH, "TAKE A HINT (%d LEFT)", 3 - curr_hints));
 
-        if (curr_question >= 0 && curr_question <= 5)
+        if (curr_question >= 0 && curr_question <= 4)
             questionNumber.setText(questions[curr_question]);
 
         passCode.setOnEditorActionListener((v, actionId, event) -> {
@@ -155,8 +222,8 @@ public class QuestionFragment extends Fragment {
             String codeString = passCode.getText().toString().trim();
             passCode.setText("");
             passCode.setHint("Passcode");
-            if (curr_question < 6 && codeString.length() == 6 && Integer.parseInt(codeString.substring(0, 6)) == passcodes[curr_question]) {
-                Log.e(TAG, "onClickNext: time = "+ Calendar.getInstance().getTimeInMillis());
+            if (curr_question < 5 && codeString.length() == 6 && Integer.parseInt(codeString.substring(0, 6)) == passcodes[curr_question]) {
+                Log.e(TAG, "onClickNext: time = " + Calendar.getInstance().getTimeInMillis());
                 long time = System.currentTimeMillis() / 1000;
                 curr_question++;
 //                Log.e(TAG, String.format("onClick: %d, %d, %d", curr_question, curr_hints, time));
@@ -172,7 +239,7 @@ public class QuestionFragment extends Fragment {
                 curr_start_time = time;
                 curr_hints = 0;
 
-                if (curr_question == 6) {   // all questions solved
+                if (curr_question == 5) {   // all questions solved
                     questionNumber.setText("CONGRATULATIONS!!!");
                     passCode.setVisibility(View.GONE);
                     nextButton.setEnabled(false);

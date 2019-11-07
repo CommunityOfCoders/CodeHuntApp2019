@@ -62,11 +62,11 @@ public class TeamData {
     static int calc_hint_time(int hints) {
         switch (hints) {
             case 1:
-                return 180;
+                return 300; //5 mins
             case 2:
-                return 180 * 2 + 120;
+                return 720; // 5 + 7 mins
             case 3:
-                return 180 * 3 + 120;
+                return 1320; // 5 + 7 + 10 mins
             default:
                 return 0;
         }
