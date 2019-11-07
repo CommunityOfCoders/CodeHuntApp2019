@@ -53,8 +53,8 @@ public class QuestionFragment extends Fragment {
                     "\n" +
                     "3\n" +
                     "6 8 10\n" +
-                    "output: Not found",          // Lab3 -> BCTLab           // 124067
-                "Round2\n\n1. I am fond of gravitational force who has coloured several lives! (2)\n" +
+                    "output: Not found\n",          // Lab3 -> BCTLab           // 124067
+                "Round 2\n\n1. I am fond of gravitational force who has coloured several lives! (2)\n" +
                     "\n" +
                     "2.  I am a programming language such that if you insert 1 ruppee in atm you get 10^6 rupees out. (6)\n" +
                     "\n" +
@@ -86,20 +86,20 @@ public class QuestionFragment extends Fragment {
                     "To know the answer:\n" +
                     "“Ask  us  no  questions  and  we’ll  tell  you  no  lies”\n" +
                     "\n" +
-                    "These days will help you find your next location:\n" +
-                    "37 years since the foundation of Microsoft.\u2028The day when Dolly the sheep died.\n" +
-                    "Nicolas Cage’s 37th birthday.\u2028Apple Inc.’s 30th anniversary.\n" +
-                    "Justin Gatlin won 100m, World Athletics Championships, Helsinki, Finland.\n" +
-                    "One year since the launch of Opportunity.\n" +
-                    "7 years since the production of first digital cinema production in Europe.\n" +
+                    "These days will help you find your next location:\n\n" +
+                    "37 years since the foundation of Microsoft.\n\nThe day when Dolly the sheep died.\n\n" +
+                    "Nicolas Cage’s 37th birthday.\n\nApple Inc.’s 30th anniversary.\n\n" +
+                    "Justin Gatlin won 100m, World Athletics Championships, Helsinki, Finland.\n\n" +
+                    "One year since the launch of Opportunity.\n\n" +
+                    "7 years since the production of first digital cinema production in Europe.\n\n" +
                     "33 years since Neil Armstrong stepped on moon.",               // VLSILab -> NCC           // 348215
             "Round 4\n\nPROBLEM STATEMENT 1 :\n" +
-                    "Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.\n" +
+                    "Write a function rotate(ar[], d, n) that rotates arr[] of size n by d elements.\n\n" +
                     "INPUT :\n" +
                     "arr[] = {1,2,3,4,5,6,7}\n" +
-                    "d = 2\n" +
+                    "d = 2\n\n" +
                     "OUTPUT:\n" +
-                    "arr[] = {3,4,5,6,7,1,2}\n",             // Lab3Q1 -> Lab3Q2         // 672153
+                    "arr[] = {3,4,5,6,7,1,2}\n\n",             // Lab3Q1 -> Lab3Q2         // 672153
             "Round 4\n\nPROBLEM STATEMENT 2:\n" +
                     "\n" +
                     "For a given square matrix, find its transpose and print it on the terminal.\n" +
