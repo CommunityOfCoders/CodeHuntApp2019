@@ -5,4 +5,5 @@
 2.\tYou are allowed to ask three hints at the most; after 5, 10, and 15 minutes after the time of your arrival at the location.\n
 3.\tAs you have been briefed about, we’re timing your Hunt ever since you began. For each hint asked for in this question, an additional time of 5, 7, and 10 minutes respectively shall be added to your total time for the corresponding hint taken. (The team to have the minimum total time at the end of CodeHunt wins)\n
 4.\tNeither hints nor time penalties shall be given after the third hint is exhausted. You may still try solving the clue.\n</string>
+    <string name="end_point">CONGRATULATIONS!</string>
 </resources>

@@ -1,12 +1,10 @@
 package com.example.codehunt;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +24,7 @@ import com.google.firebase.database.annotations.Nullable;
 
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -35,7 +34,7 @@ public class QuestionFragment extends Fragment {
     private EditText passCode;
     private Button nextButton;
     private Button hintsButton;
-    SharedPreferences pref;
+    private SharedPreferences pref;
     private int[] passcodes = {124067, 834592, 348215, 672153, 681354};
     private String[] questions = {
             "Round 1\n\nQuestion:Given an array of size n, print the value of minimum odd element.\n" +
@@ -124,7 +123,7 @@ public class QuestionFragment extends Fragment {
         passCode = view.findViewById(R.id.passcode);
         nextButton = view.findViewById(R.id.next);
         hintsButton = view.findViewById(R.id.hintsButton);
-        pref = getContext().getSharedPreferences(Constants.SP, MODE_PRIVATE);
+        pref = Objects.requireNonNull(getContext()).getSharedPreferences(Constants.SP, MODE_PRIVATE);
 
         curr_question = pref.getInt(Constants.CurrentQuestion, 0); // Real_Q-1
         curr_hints = pref.getInt("Q" + (curr_question + 1) + "Hints", 0);
@@ -136,7 +135,7 @@ public class QuestionFragment extends Fragment {
 //            startActivity(i);
 //////            return view;
             passCode.setVisibility(View.GONE);
-            questionNumber.setText("CONGRATULATIONS!!!");
+            questionNumber.setText(getText(R.string.end_point));
             nextButton.setEnabled(false);
             nextButton.setVisibility(View.GONE);
             hintsButton.setEnabled(false);
@@ -168,6 +167,7 @@ public class QuestionFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("ApplySharedPref")
     private void onClickHints() {
         if (curr_hints < 3) {
             long time = System.currentTimeMillis() / 1000;
@@ -175,26 +175,17 @@ public class QuestionFragment extends Fragment {
             if (time >= curr_start_time + (curr_hints + 1) * 300) { // TODO Change to 300
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
                 alertDialogBuilder.setMessage("Are you sure you want to take a hint?");
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
-                        alertDialogBuilder.setMessage("Ask a volunteer to give you a hint");
-                        alertDialogBuilder.setPositiveButton("Yes, the volunteer gave me a hint", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                curr_hints++;
-                                pref.edit().putInt("Q" + curr_question + "Hints", curr_hints).commit();
-                                hintsButton.setText(String.format(Locale.ENGLISH, "TAKE A HINT (%d LEFT)", 3 - curr_hints));
-                            }
-                        });
-                        alertDialogBuilder.create().show();
-                    }
+                alertDialogBuilder.setPositiveButton("Yes", (dialog, which) -> {
+                    AlertDialog.Builder alertDialogBuilder1 = new AlertDialog.Builder(getContext());
+                    alertDialogBuilder1.setMessage("Ask a volunteer to give you a hint");
+                    alertDialogBuilder1.setPositiveButton("Yes, the volunteer gave me a hint", (dialog1, which1) -> {
+                        curr_hints++;
+                        pref.edit().putInt("Q" + curr_question + "Hints", curr_hints).commit();
+                        hintsButton.setText(String.format(Locale.ENGLISH, "TAKE A HINT (%d LEFT)", 3 - curr_hints));
+                    });
+                    alertDialogBuilder1.create().show();
                 });
-                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
+                alertDialogBuilder.setNegativeButton("No", (dialog, which) -> {
                 });
                 alertDialogBuilder.create().show();
             } else {
@@ -220,6 +211,7 @@ public class QuestionFragment extends Fragment {
 //        dialog.show();
     }
 
+    @SuppressLint("ApplySharedPref")
     private void onClickNext() {
         if (passCode.getText().toString().trim().equals("")) {
             Toast.makeText(getContext(), "Please Enter the Passcode", Toast.LENGTH_LONG).show();
@@ -245,7 +237,7 @@ public class QuestionFragment extends Fragment {
                 curr_hints = 0;
 
                 if (curr_question == 5) {   // all questions solved
-                    questionNumber.setText("CONGRATULATIONS!!!");
+                    questionNumber.setText(getText(R.string.end_point));
                     passCode.setVisibility(View.GONE);
                     nextButton.setEnabled(false);
                     nextButton.setVisibility(View.GONE);

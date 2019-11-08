@@ -11,18 +11,15 @@ import com.google.android.material.tabs.TabLayout;
 public class MainActivity2 extends AppCompatActivity {
     private static final String TAG = "CodeHunt";
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-    private ViewPager mViewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        SectionsPageAdapter mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         // setup the viewpager with the section adapter
-        mViewPager = findViewById(R.id.container);
+        ViewPager mViewPager = findViewById(R.id.container);
         setupviewPager(mViewPager);
 
         TabLayout tabLayout = findViewById(R.id.tabs);

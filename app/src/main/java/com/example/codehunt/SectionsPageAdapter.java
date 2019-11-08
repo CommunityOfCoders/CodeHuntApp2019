@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +15,11 @@ public class SectionsPageAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public SectionsPageAdapter(FragmentManager fm) {
+    SectionsPageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
@@ -28,6 +30,7 @@ public class SectionsPageAdapter extends FragmentPagerAdapter {
         return mFragmentTitleList.get(position);
     }
 
+    @NotNull
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);

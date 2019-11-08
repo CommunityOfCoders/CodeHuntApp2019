@@ -21,15 +21,15 @@ import com.google.firebase.database.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class LeaderboardFragment extends Fragment {
     private static final String TAG = "LeaderboardFragment";
-    FirebaseDatabase database;
-    SharedPreferences preferences;
-    ArrayList<TeamData> teamDataArrayList;
-    LinearLayout leaderboardLinearLayout;
+    private SharedPreferences preferences;
+    private ArrayList<TeamData> teamDataArrayList;
+    private LinearLayout leaderboardLinearLayout;
 
     @Nullable
     @Override
@@ -37,9 +37,9 @@ public class LeaderboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.leaderboard_fragment, container, false);
         leaderboardLinearLayout = view.findViewById(R.id.leaderboardLinearLayout);
 //        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         teamDataArrayList = new ArrayList<>();
-        preferences = getContext().getSharedPreferences(Constants.SP, MODE_PRIVATE);
+        preferences = Objects.requireNonNull(getContext()).getSharedPreferences(Constants.SP, MODE_PRIVATE);
         DatabaseReference teams = database.getReference("teams");
         teams.keepSynced(true);
         teams.addValueEventListener(new ValueEventListener() {

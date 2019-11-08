@@ -1,12 +1,11 @@
 package com.example.codehunt;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
@@ -18,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class CodehuntActivity extends AppCompatActivity {
     private TextView TeamNameET;
@@ -38,16 +38,13 @@ public class CodehuntActivity extends AppCompatActivity {
         setContentView(R.layout.activity_codehunt);
         TeamNameET = findViewById(R.id.TeamNameET);
 
-        TeamNameET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    onClickStart(TeamNameET);
-                    handled = true;
-                }
-                return handled;
+        TeamNameET.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled = false;
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                onClickStart(TeamNameET);
+                handled = true;
             }
+            return handled;
         });
     }
 
@@ -62,20 +59,14 @@ public class CodehuntActivity extends AppCompatActivity {
         if (!teamName.equals("")) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Ready?");
-            alertDialogBuilder.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    init(teamName);
-                    Log.e(TAG, "onClick: TeamName"+teamName );
-                    Intent intent = new Intent(CodehuntActivity.this, MainActivity2.class);
-                    Toast.makeText(CodehuntActivity.this, "All the Best!", Toast.LENGTH_LONG).show();
-                    startActivity(intent);
-                }
+            alertDialogBuilder.setPositiveButton("Yes!", (dialog, which) -> {
+                init(teamName);
+                Log.e(TAG, "onClick: TeamName"+teamName );
+                Intent intent = new Intent(CodehuntActivity.this, MainActivity2.class);
+                Toast.makeText(CodehuntActivity.this, "All the Best!", Toast.LENGTH_LONG).show();
+                startActivity(intent);
             });
-            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
+            alertDialogBuilder.setNegativeButton("No", (dialog, which) -> {
             });
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
@@ -83,6 +74,7 @@ public class CodehuntActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Enter Your Team Name!", Toast.LENGTH_LONG).show();
     }
 
+    @SuppressLint("ApplySharedPref")
     void init(String teamName) {
         String tN = pref.getString(Constants.TeamName, Constants.TeamName);
         Log.e(TAG, "init: tN = " + tN);
@@ -101,7 +93,7 @@ public class CodehuntActivity extends AppCompatActivity {
             editor.putString(Constants.Key, key);
             Log.e(TAG, "init: key = "+key);
             TeamData team = new TeamData(teamName, 1, startTime, -1, -1, -1, -1, -1, -1);
-            teams.child(key).setValue(team);
+            teams.child(Objects.requireNonNull(key)).setValue(team);
             editor.commit();
         }
     }
