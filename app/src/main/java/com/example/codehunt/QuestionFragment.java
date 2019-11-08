@@ -135,7 +135,6 @@ public class QuestionFragment extends Fragment {
 //            Intent i = new Intent(getContext(), com.example.codehunt.Finish.class);
 //            startActivity(i);
 //////            return view;
-            Toast.makeText(getContext(), "WOAH You did it!!", Toast.LENGTH_SHORT).show();
             passCode.setVisibility(View.GONE);
             questionNumber.setText("CONGRATULATIONS!!!");
             nextButton.setEnabled(false);
@@ -252,6 +251,9 @@ public class QuestionFragment extends Fragment {
                     nextButton.setVisibility(View.GONE);
                     hintsButton.setEnabled(false);
                     hintsButton.setVisibility(View.GONE);
+                    questionNumber.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    questionNumber.setTextSize(30);
+                    questionNumber.setTextColor(getResources().getColor(R.color.green));
                 } else {
                     Toast.makeText(getContext(), "Great Going!", Toast.LENGTH_LONG).show();
                     questionNumber.setText(questions[curr_question]);
