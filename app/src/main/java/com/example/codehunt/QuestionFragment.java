@@ -42,7 +42,7 @@ public class QuestionFragment extends Fragment {
                     "\n" +
                     "Input format: Enter a number N, input N elements from the user\n" +
                     "\n" +
-                    "Output format: A single digit representing the value of minimum odd element ,if there is no odd element found print \"Not found\" (without double quotes).\n" +
+                    "Output format: A single number representing the value of minimum odd element ,if there is no odd element found print \"Not found\" (without double quotes).\n" +
                     "\n" +
                     "Example :\n" +
                     "4 \n" +
