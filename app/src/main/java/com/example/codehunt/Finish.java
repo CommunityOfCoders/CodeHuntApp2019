@@ -20,16 +20,16 @@ public class Finish extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences(Constants.SP, MODE_PRIVATE);
         StringBuilder stats = new StringBuilder("<h2>Your Stats</h2><br>");
         stats.append("<table>");
-        stats.append("<tr> <th>Question No.</th> <th>Time</th> <th>Hints</th> <th>Effective Time</th> </tr>");
-        for (int i = 1; i <= 6; i++) {
+        stats.append("<tr> <th>Question No.\t\t\t\t\t\t</th> <th>Time\t\t\t\t\t\t\t</th> <th>Hints\t</th> <th>Effective Time\t</th> <br> </tr>");
+        for (int i = 1; i <= 5; i++) {
             long time = (pref.getLong("Q" + i + "Time", 0) -
                     pref.getLong("Q" + (i - 1) + "Time", 0));
             int hints = pref.getInt("Q" + i + "Hints", 0);
             long effTime = time + TeamData.calc_hint_time(hints);
-            stats.append("<tr> <td>").append(i).
-                    append("</td> <td>").append(time).
-                    append("</td> <td>").append(hints).
-                    append("</td> <td>").append(effTime).append("</td> </tr><br>");
+            stats.append("\t\t\t\t\t\t").append("<tr> <td>").append(i).append("\n").
+                    append("\t\t\t\t\t\t").append("</td> <td>").append(time).
+                    append("\t\t\t\t\t\t").append("</td> <td>").append(hints).
+                    append("\t\t\t\t\t\t").append("</td> <td>").append(effTime).append("</td> </tr><br>");
         }
         stats.append("</table>");
 

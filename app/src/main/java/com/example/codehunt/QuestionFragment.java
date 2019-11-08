@@ -3,8 +3,10 @@ package com.example.codehunt;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -130,16 +132,19 @@ public class QuestionFragment extends Fragment {
         Log.e(TAG, String.format("onCreateView: %d, %d, %d", curr_question, curr_hints, curr_start_time));
 
         if (curr_question >= 5) {
-//            Intent i = new Intent(getContext(), com.coc.codehunt.Finish.class);
+//            Intent i = new Intent(getContext(), com.example.codehunt.Finish.class);
 //            startActivity(i);
-////            return view;
-//            Toast.makeText(getContext(), "WOAH You did it!!", Toast.LENGTH_SHORT).show();
+//////            return view;
+            Toast.makeText(getContext(), "WOAH You did it!!", Toast.LENGTH_SHORT).show();
             passCode.setVisibility(View.GONE);
             questionNumber.setText("CONGRATULATIONS!!!");
             nextButton.setEnabled(false);
             nextButton.setVisibility(View.GONE);
             hintsButton.setEnabled(false);
             hintsButton.setVisibility(View.GONE);
+            questionNumber.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            questionNumber.setTextSize(30);
+            questionNumber.setTextColor(getResources().getColor(R.color.green));
 
 //            Intent intent = new Intent(getContext(), CodehuntActivity.class);
 //            startActivity(intent);
@@ -202,17 +207,18 @@ public class QuestionFragment extends Fragment {
     }
 
     private void onClickRules() {
-        final Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.rules_dialog_layout);
-        dialog.setTitle("Rules About Hints");
-        TextView dialogButton = dialog.findViewById(R.id.dialogOK);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+        startActivity(new Intent(getContext(),Rules.class));
+//        final Dialog dialog = new Dialog(getContext());
+//        dialog.setContentView(R.layout.rules_dialog_layout);
+//        dialog.setTitle("Rules About Hints");
+//        Button dialogButton = dialog.findViewById(R.id.next);
+//        dialogButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.show();
     }
 
     private void onClickNext() {

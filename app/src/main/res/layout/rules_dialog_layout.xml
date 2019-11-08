@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/infoButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/dialogOK"
@@ -15,7 +16,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="0dp"
         android:text="Rules Regarding The Hints"
-        android:textColor="#ffffff"
+        android:textColor="@color/green"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,9 +32,9 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
         android:padding="16dp"
         android:text="@string/hint_rules"
+        android:textColor="#FFFFFF"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -44,10 +45,10 @@
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="#FFFFFF"
+        android:background="@color/green"
         android:gravity="center"
         android:text="OK"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

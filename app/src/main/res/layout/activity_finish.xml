@@ -38,9 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
         android:textColor="#FFFFFF"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/congratsTV"/>
+        app:layout_constraintTop_toBottomOf="@+id/congratsTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
