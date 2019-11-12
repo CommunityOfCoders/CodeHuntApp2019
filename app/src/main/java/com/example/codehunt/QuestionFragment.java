@@ -68,7 +68,7 @@ public class QuestionFragment extends Fragment {
                     "Another guy: I am rolling on the floor laughing! \n" +
                     "\n" +
                     "loool iz 20\n" +
-                    "loooooool iz 74\n" +
+                    "loooooool iz 76\n" +
                     "rtfm \n" +
                     "   wtf loool iz liek loooooool \n" +
                     "       tldr \n" +
@@ -266,8 +266,10 @@ public class QuestionFragment extends Fragment {
 //                pref.getLong("Q" + (curr_question - 1) + "Time", 0));
         Log.e(TAG, "updateFBDB: start = " + start);
         Log.e(TAG, "updateFBDB: end = " + end);
-        Log.e(TAG, "updateFBDB: hintsPenalty = " + TeamData.calc_hint_time(current_hints));
-        time += TeamData.calc_hint_time(current_hints);
+        if(curr_question != 1) {
+            Log.e(TAG, "updateFBDB: hintsPenalty = " + TeamData.calc_hint_time(current_hints));
+            time += TeamData.calc_hint_time(current_hints);
+        }
         teams.child(key).child("q" + curr_question).setValue(time);
         Log.e(TAG, "onDataChange: curr_ques = " + (curr_question + 1));
         Log.e(TAG, "onDataChange: q" + curr_question + " = " + time);
